@@ -1,0 +1,42 @@
+Flutter CheatSheet:
+
+Different folders for different components, we will create as many cohesive components as possible. Flutter already comes with great guidelines on different pieces: 
+
+Lib : contains .dart files related to each screen in different folders: pages, states, models, widgets, utils. Execution begins in main.dart. 
+Pages: Create page_name.dart for the UX of each screen in this folder. Create page_state.dart for the state of the page in the states folder.
+Models: This folder contains all the simple model classes for the data entities flowing in the app. Create respective model files here like QuestItem.dart, UserModel.dart. Also ensure that each of these contain methods for convertToMap() and convertFromMap() so that we can use them while parsing json data from the network later.
+States: Each page has its own state object. State needs to be managed by us with care. This folder contains the state classes. 
+Widgets: Flutter gives elaborate set of widget readily with their own state management. For view specific to our apps, try to extract as many views as widgets in their own files in this folder. If we don't do this then each page_name.dart created under the lib folder will be huge. Example: QuestListItem.dart, UserProfileWidget.dart, NFTListItem.dart.
+Services: All servcies we use
+Utils: Folder for any utility classes around state management, data processing, ux styling etc. 
+Routes: This folder contains the dart files storing route related information. Create a master route file and store all possible navigation routes there as strings, like MasterRouter.dart
+config:App Specific config
+Domain: All domain specific logic
+Keep one file for exports in each folder above. 
+
+This is a great link for layout creation. Each view should have its own widget, state, theme and model. Each screen can have multiple views.
+
+
+Use ListView.builder() to create multiple list views from a data source.
+Break down each animation/grid/list view related pieces into different components like ItemView.dart for UX, ItemModel.dart for data, ItemTheme.dart for styling and additional helpers like ItemBuilderFactory etc.
+Themes: This folder contains all dart files for storing the ThemeData used for styling widgets in UX creation. Create AppTheme.dart, QuestItemListTheme.dart etc.
+Assets: This folder contains sub folders for each asset we plan to use. For images: images. For local files: files.
+
+Function wise:
+We use http library from flutter to access APIs. Prepend await for this async.
+We use dart:convert library to decode/encode json data.
+We use Navigator class to push/pop screens.
+
+
+General UX guidelines:
+Constraints get enforced from top to down in hierarchy, so child rules
+Sizes get enforced from down to up in the hierarchy, so parent rules.
+Parent sets the position.
+Link here.
+
+Running the app on different form factors and platforms:
+By default ios, android and web folders are created when we initiate the flutter app. But for running you can first open any simulator or emulator or web browser and in the IDE please select one of these to run on.
+
+
+Instrumenting/ Profiling:
+Select the device to run and use Dart Dev Tools.
